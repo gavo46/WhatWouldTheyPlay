@@ -39,7 +39,7 @@ def get_image_list(folder):
 
 @st.cache_data
 def load_and_prep_data():
-    df = pd.read_csv("allshows.csv")
+    df = pd.read_csv("necessary/.streamlit/allshows.csv")
     df["Date"] = pd.to_datetime(df["Date"], format="%m.%d.%Y").dt.date
     df["Song"] = df["Song"].str.lower()
     mean_rate = get_global_mean_play_rate(df)
