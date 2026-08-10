@@ -28,24 +28,31 @@ in the first few shows doesn't overstate their true long-run rate.
   -A capped hazard ratio plus a calendar-based decay factor prevent long-dormant (but not fully retired) 
   songs from mathematically saturating toward false-certainty — a bug caught and fixed through hands-on validation against known songs.
 
-Tech Stack \n
+Tech Stack
+
 Python is the primary language. Pandas was used for analysis, while BeautifulSoup was used for scraping.
 The site is hosted on Streamlit.
 
-Data \n
+
+Data
+
 Scraped directly from DMBAlmanac.com, covering ~2,247 documented DMB shows (of ~3,600 the site tracks in total — 
 the gap is almost entirely shows featuring Dave Matthews only or Dave and Tim Reynolds, alongside cancelled/rescheduled status or undocumented setlists, 
 none of which wouldn't have contributed usable song-level data anyway).
 
-Validation \n
+
+Validation
+
 Rather than trusting the model's formulas blindly, outputs were checked against known, real-world DMB behavior:
   -Confirmed songs played at the most recent show correctly return 0%.
   -Confirmed rare one-off songs and heavy-rotation staples land in sensible, differentiated probability ranges.
   -Caught and fixed a real bug where songs dormant for several years (but not yet at 
   the 10-year "retired" cutoff) were mathematically saturating toward ~100% probability, since their hazard 
   ratio grew unbounded — fixed with a hazard cap and a calendar-based decay factor.
+  
 
-Known limitations \n
+Known limitations
+
 -Dataset coverage is ~62% of DMBAlmanac's full show count, concentrated gaps are largely explained (cancelled/rescheduled/unknown-setlist shows).
 -Sigmoid parameters (k, c) were hand-tuned against known cases rather than formally fit via logistic regression against a full historical backtest — a natural next step for further rigor.
 -The dormancy decay factor is a reasonable heuristic, not derived from a formal survival-analysis model.
