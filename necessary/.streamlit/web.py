@@ -24,9 +24,9 @@ st.subheader("Type in your favorite Dave Matthews Band song, get the probability
 st.markdown("Data routinely sourced from DMBAlmanac.")
 st.divider()
 
-FOLDER_PATH_1 = "./happydave"
+FOLDER_PATH_1 = "necessary/.streamlit/happydave"
 
-FOLDER_PATH_2 = "./saddave"
+FOLDER_PATH_2 = "necessary/.streamlit/saddave"
 
 @st.cache_data
 def get_image_list(folder):
