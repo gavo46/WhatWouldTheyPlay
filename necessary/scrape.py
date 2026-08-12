@@ -9,7 +9,7 @@ headers = {"User-Agent": "Mozilla/5.0"}
 
 def scrape(url, writer):
 #def scrape(url):
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=10)
 
     if response.status_code != 200:
         print("Failed:", url)
@@ -18,7 +18,7 @@ def scrape(url, writer):
     if response.status_code == 429:
         print("Rate limited, backing off:", url)
         time.sleep(random.uniform(60, 90))
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=10)
 
     soup = BeautifulSoup(response.text, 'html.parser')
     songs = soup.find_all('td', class_='setheadercell sticky-song')
@@ -73,6 +73,6 @@ with open('allshows.csv', 'a', newline='', encoding='utf-8') as f:
             url = "https://dmbalmanac.com" + row[0]
             print("Scraping:", url)
             scrape(url, writer)
-            time.sleep(random.uniform(8, 15)) 
+            time.sleep(random.uniform(8, 15)) # nosec
 
 # scrape("https://dmbalmanac.com/TourShowSet.aspx?id=453055508&tid=51&where=1993")

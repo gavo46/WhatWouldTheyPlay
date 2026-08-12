@@ -74,7 +74,7 @@ if button_clicked:
         images = get_image_list(current_folder) 
 
         if images:
-            st.session_state.random_image = random.choice(images)
+            st.session_state.random_image = random.choice(images)  # nosec
             st.session_state.selected_folder = current_folder
         else:
             st.session_state.random_image = None

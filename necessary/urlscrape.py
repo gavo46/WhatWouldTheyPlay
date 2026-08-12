@@ -22,7 +22,7 @@ year_urls = ['https://dmbalmanac.com/TourShow.aspx?where=1991&aid=1', 'https://d
 
 for url in year_urls:
     urls = []
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=10)
     soup = BeautifulSoup(response.text, 'html.parser')
     body = soup.find('tbody')
     shows = body.find_all('tr', class_=['', 'tr', 'to', 'lc', 'lo', 'bc', 'misc'])
