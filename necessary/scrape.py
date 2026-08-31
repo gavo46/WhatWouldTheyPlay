@@ -64,15 +64,31 @@ def scrape(url, writer):
             writer.writerow([date, title.replace("»", "").replace(",", "").strip(), '-1'])
         increment += 1
 
-with open('allshows.csv', 'a', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(['Date', 'Song', 'Last Played'])
-    with open('showurls.csv', newline='', encoding='utf-8') as url_file:
-        reader = csv.reader(url_file)
-        for row in reader:
-            url = "https://dmbalmanac.com" + row[0]
-            print("Scraping:", url)
-            scrape(url, writer)
-            time.sleep(random.uniform(8, 15)) # nosec
+# with open('allshows.csv', 'a', newline='', encoding='utf-8') as f:
+#     writer = csv.writer(f)
+#     writer.writerow(['Date', 'Song', 'Last Played'])
+#     with open('newshows.csv', newline='', encoding='utf-8') as url_file:
+#         reader = csv.reader(url_file)
+#         next(reader)
+#         for row in reader:
+#             url = "https://dmbalmanac.com" + row[0]
+#             print("Scraping:", url)
+#             scrape(url, writer)
+#             time.sleep(random.uniform(8, 15)) # nosec
 
 # scrape("https://dmbalmanac.com/TourShowSet.aspx?id=453055508&tid=51&where=1993")
+
+with open('othershows.csv', 'a', newline='', encoding='utf-8') as f:
+    writer = csv.writer(f)
+    
+    
+    urls = [
+        "https://dmbalmanac.com/TourShowSet.aspx?id=453094357&tid=8188&where=2026",
+        "https://dmbalmanac.com/TourShowSet.aspx?id=453094358&tid=8188&where=2026"
+    ]
+    
+    for url in urls:
+        print("Scraping:", url)
+        scrape(url, writer)
+        f.flush()
+        time.sleep(random.uniform(8, 15))
