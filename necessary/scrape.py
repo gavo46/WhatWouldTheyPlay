@@ -83,8 +83,7 @@ with open('othershows.csv', 'a', newline='', encoding='utf-8') as f:
     
     
     urls = [
-        "https://dmbalmanac.com/TourShowSet.aspx?id=453094357&tid=8188&where=2026",
-        "https://dmbalmanac.com/TourShowSet.aspx?id=453094358&tid=8188&where=2026"
+        "https://dmbalmanac.com/TourShowSet.aspx?id=453094379&tid=8188&where=2026"
     ]
     
     for url in urls:
