@@ -1,5 +1,8 @@
 What Would They Play?
 
+***COMPLETED ALMOST ENTIRELY WITHOUT THE USE OF AI ASSISTANCE.***
+
+
 A predictive model that estimates the probability of hearing a specific song at the next Dave Matthews Band show, built entirely from self-scraped historical setlist data.
 All data is compiled from the DMBAlmanac, an HTML-based site developed in the early 2000s and continuously updated with every show the band has played by
 notoriously obsessive fans.
